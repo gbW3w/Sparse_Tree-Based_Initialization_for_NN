@@ -1,0 +1,7 @@
+batch_size: 256
+beta: 0.5
+depth: 9
+epochs: 100
+learning_rate: 2.26210539196309e-05
+reg_l1: 0
+width: 1284

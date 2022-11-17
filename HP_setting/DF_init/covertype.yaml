@@ -1,0 +1,5 @@
+forest_depth: 3
+max_features: 0.6329974936602693
+max_tree_depth: 10
+n_estims: 2
+n_forests: 1

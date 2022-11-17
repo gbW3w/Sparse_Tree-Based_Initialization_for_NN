@@ -93,35 +93,50 @@ class DataLoader_RepeatedStratifiedKFold():
         self.class_weights /= np.sum(self.class_weights)
         print('set class weights', self.class_weights)
 
+    def get_loss_name(self):
+        if self.task == 'regression':
+            return 'MSELoss'
+        if self.task == 'classification':
+            if self.n_classes == 2:
+                return 'AurocScoreBinary'
+            if self.n_classes > 2:
+                return 'Accuracy'
+        raise ValueError()
+
+    def get_choose_loss_fun(self):
+        if self.task == 'regression':
+            return np.min
+        if self.task == 'classification':
+            return np.max
+        raise ValueError()
+
+    def get_direction(self):
+        if self.task == 'regression':
+            return 'minimize'
+        if self.taks == 'classification':
+            return 'maximize'
+        raise ValueError()
+
     @staticmethod
     def load_data(data):
         n_class = 1
         if data == 'protein':
-            protein_path = "../datasets/protein/"
+            protein_path = "./datasets/protein/"
             X, y, is_categorical = load_protein(protein_path)
             in_features = 9
             out_features = 1
             task = 'regression'
 
         elif data == 'airbnb':
-            airbnb_path = "../datasets/airbnb_berlin/"
+            airbnb_path = "./datasets/airbnb_berlin/"
             # Regression Airbnb
             X, y, is_categorical = load_airbnb(airbnb_path)
             in_features = 13
             out_features = 1
             task = 'regression'
 
-        elif data == 'letter':
-            raise NotImplementedError()
-            X_train, Y_train, x_test, y_test = load_letter()
-            in_features = 16
-            out_features = 26
-            task = 'classification'
-            error = 'count'
-            n_class = 26
-
         elif data == 'adult':
-            adult_path = "../datasets/adult/"
+            adult_path = "./datasets/adult/"
             
             X, y, is_categorical = load_adult(adult_path)
             in_features = X.shape[1]
@@ -130,35 +145,12 @@ class DataLoader_RepeatedStratifiedKFold():
             n_class = 2
 
         elif data == 'higgs':
-            path = "../datasets/higgs/"
+            path = "./datasets/higgs/"
             X, y, is_categorical = load_higgs(path)
             in_features = 28
             out_features = 2
             task = 'classification'
             n_class = 2
-            
-
-        elif data == "yeast":
-            raise NotImplementedError()
-            X_train, Y_train, x_test, y_test = load_yeast()
-            in_features = 8
-            out_features = 10
-            task = 'classification'
-            error = 'count'
-            n_class = 10
-
-        elif data == 'uniform':
-            raise NotImplementedError()
-            d, n = 2, 1000
-            np.random.seed(1)
-            X_train = np.random.uniform(size=(n,d))
-            Y_train = np.exp(3*np.sum(X_train, axis=1))
-            x_test = np.random.uniform(size=(n,d))
-            y_test = np.exp(3*np.sum(x_test, axis=1))
-            in_features = d
-            out_features = 1
-            task = 'regression'
-            error = 'mse'
 
         elif data == 'housing':
             data = fetch_california_housing()
@@ -169,7 +161,7 @@ class DataLoader_RepeatedStratifiedKFold():
             task = 'regression'
 
         elif data == 'covertype':
-            covertype_path = "../datasets/covertype/"
+            covertype_path = "./datasets/covertype/"
             
             X, y, is_categorical = load_covertype(covertype_path)
             in_features = X.shape[1]
@@ -179,7 +171,7 @@ class DataLoader_RepeatedStratifiedKFold():
 
 
         elif data == 'bank':
-            bank_path = "../datasets/bank/"
+            bank_path = "./datasets/bank/"
             
             X, y, is_categorical = load_bank(bank_path)
             in_features = X.shape[1]
@@ -188,7 +180,7 @@ class DataLoader_RepeatedStratifiedKFold():
             n_class = 2
 
         elif data == 'volkert':
-            volkert_path = '../datasets/volkert/'
+            volkert_path = './datasets/volkert/'
             X, y, is_categorical = load_volkert(volkert_path)
             in_features = X.shape[1]
             out_features = 10
@@ -196,7 +188,7 @@ class DataLoader_RepeatedStratifiedKFold():
             n_class = out_features
 
         elif data == 'heloc':
-            heloc_path = "../datasets/HELOC/"
+            heloc_path = "./datasets/HELOC/"
             
             X, y, is_categorical = load_heloc(heloc_path)
             in_features = X.shape[1]
@@ -205,7 +197,7 @@ class DataLoader_RepeatedStratifiedKFold():
             n_class = 2
 
         elif data == 'blastchar':
-            path = "../datasets/blastchar/"
+            path = "./datasets/blastchar/"
             
             X, y, is_categorical = load_blastchar(path)
             in_features = X.shape[1]
@@ -214,7 +206,7 @@ class DataLoader_RepeatedStratifiedKFold():
             n_class = 2
             
         elif data == 'diamonds':
-            path = "../datasets/diamonds/"
+            path = "./datasets/diamonds/"
             
             X, y, is_categorical = load_diamonds(path)
             in_features = X.shape[1]

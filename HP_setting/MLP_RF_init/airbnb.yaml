@@ -1,0 +1,13 @@
+RF_init_max_depth: 10
+RF_init_max_features: 0.32145683260369645
+RF_init_n_estim: 2
+batch_size: 256
+beta: 0.5
+depth: 5
+drop_layers: 1
+epochs: 100
+learning_rate: 0.00017196052276569897
+reg_l1: 0
+strength01: 668.3064018893316
+strength12: 1.0870179980998986
+width: 2048

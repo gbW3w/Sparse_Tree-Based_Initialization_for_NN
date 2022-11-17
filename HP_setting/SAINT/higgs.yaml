@@ -1,0 +1,7 @@
+batch_size: 64
+beta: 0.5
+depth: 2
+dim: 16
+dropout: 0.8
+epochs: 100
+heads: 8

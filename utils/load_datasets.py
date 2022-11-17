@@ -87,7 +87,7 @@ def load_airbnb(data_path, test_size=0.3, seed=15):
     Loads the airbnb dataset
     """
 
-    calendar = pd.read_csv(data_path + 'calendar.csv')
+    calendar = pd.read_csv(data_path + 'calendar.csv.zip')
     listings = pd.read_csv(data_path + 'listings.csv')
 
     listings = listings.drop(['name', 'host_name', 'last_review', 'license'], axis=1)  # Drop several features
@@ -165,7 +165,7 @@ def load_higgs(path):
     """
     Loads Higgs dataset
     """
-    df = pd.read_csv(path+'higgs_vsmall.csv', header=None)
+    df = pd.read_csv(path+'higgs_vsmall.csv.zip', header=None)
 
     X = df.values
     y = X[:,-1].astype(np.int64)
@@ -257,7 +257,7 @@ def load_covertype(data_path):
     Loads the adult dataset
     """
     # load data
-    data = pd.read_csv(data_path + 'covtype.data', header=None)
+    data = pd.read_csv(data_path + 'covtype.data.zip', header=None)
 
     # transform categorical variables to int
     #data, is_categorical = str_to_int(data)

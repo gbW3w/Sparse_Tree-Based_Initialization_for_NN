@@ -117,7 +117,7 @@ class MLP(nn.Module):
         # fit model
         model.fit(data['X_train'], data['y_train'])
         #init from model
-        time = self.init_from_model(model, strength01, strength12, None, drop_layers, timer=timer)
+        time = self.init_from_tree(model, strength01, strength12, None, drop_layers, timer=timer)
         return model, time
 
     def init_RF(self, data: tuple, *, task: str, n_classes: int, max_depth: int, n_estim: int, max_features: float, strength01: float, 
@@ -133,7 +133,7 @@ class MLP(nn.Module):
         # fit model
         model.fit(data['X_train'], data['y_train'])
         # init from model
-        time = self.init_from_model(model, strength01, strength12, None, drop_layers, timer=timer)
+        time = self.init_from_tree(model, strength01, strength12, None, drop_layers, timer=timer)
         return model, time
 
     def init_DF(self, data: tuple, task: str, n_classes: int, forest_depth: int, n_forests: int, n_estim: int, max_depth: int, 
@@ -151,11 +151,11 @@ class MLP(nn.Module):
         # fit model
         model.fit(data['X_train'], data['y_train'])
         # init from model
-        time = self.init_from_model(model, strength01, strength12, strength23, drop_layers, strength_id, timer=timer)
+        time = self.init_from_tree(model, strength01, strength12, strength23, drop_layers, strength_id, timer=timer)
         return model, time
         
 
-    def init_from_model(self, model: Union[RandomForest, XGBoostForest, DeepForest], strength01: float, strength12: float, 
+    def init_from_tree(self, model: Union[RandomForest, XGBoostForest, DeepForest], strength01: float, strength12: float, 
                         strength23: float, drop_layers: int, strength_id: float=None, timer: Time=None):
         # get tree structure
         forest_structure = model.get_forest_structure()
@@ -215,7 +215,7 @@ class MLP(nn.Module):
         pruning_rate_per_round = 1 - pruning_rate ** (1 / pruning_rounds)
         for i in range(pruning_rounds):
             # fit MLP to data
-            self.fit(data, task, epochs, batch_size, learning_rate, weight_decay, metrics, regularize_l1, early_stop=None)
+            self.fit(data, task, epochs//pruning_rounds, batch_size, learning_rate, weight_decay, metrics, regularize_l1, early_stop=None)
             # prune MLP
             for layer in self.layers:
                 torch.nn.utils.prune.l1_unstructured(layer, 'weight', pruning_rate_per_round)

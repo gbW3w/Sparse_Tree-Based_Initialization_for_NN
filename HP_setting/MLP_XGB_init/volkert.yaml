@@ -1,0 +1,17 @@
+XGB_init_learning_rate: 0.27169049254455124
+XGB_init_max_depth: 4
+XGB_init_n_estim: 12
+XGB_init_reg_l1: 6.761203114555424e-06
+XGB_init_reg_l2: 1.9941709480285437e-07
+XGB_init_strength01: 4.078516512728091
+XGB_init_strength12: 0.07112487762035721
+batch_size: 256
+beta: 0.5
+depth: 7
+drop_layers: 1
+epochs: 100
+learning_rate: 0.0001633071915690494
+reg_l1: 0
+strength01: 4.078516512728091
+strength12: 0.07112487762035721
+width: 2048

@@ -1,6 +1,4 @@
 import math
-import os
-import yaml
 
 MLP_WIDTH = 2048
 MLP_DEPTH = 10
@@ -123,17 +121,16 @@ def search_space_MLP_DF_init(trial, hp_fix, n_classes, task, in_features):
     }
 
 def search_space_MLP_WT_init(trial, hp_fix, n_classes, task, in_features):
-    lr = trial.suggest_float('learning_rate', 1e-6, 1e-1, log=True)
     return {
-        'learning_rate': lr, 
+        'learning_rate': trial.suggest_float('learning_rate', 1e-6, 1e-1, log=True), 
         'depth': trial.suggest_int('depth', 1, MLP_DEPTH), 
         'width': trial.suggest_int('width', 1, MLP_WIDTH), # fixe
         'epochs': NB_EPOCHS, # fixe
         'reg_l1': 0, # fixe a 0
         'batch_size': BATCH_SIZE, # fixe
         'beta': 0.5,#None if task == 'regression' else 1-trial.suggest_float('beta', 1e-8, 1e-3, log=True),
-        'lr_pruning': lr,#trial.suggest_float('lr_pruning', 1e-6, 1e-1, log=True), 
-        'pruning_rounds': 15,#trial.suggest_categorical('pruning_rounds', [1,2,3,4,5,6,7,8,9,10,11,12,14,16,20,25]),
+        'lr_pruning': trial.suggest_float('lr_pruning', 1e-6, 1e-1, log=True), 
+        'pruning_rounds': trial.suggest_categorical('pruning_rounds', [1,2,3,4,5,6,7,8,9,10,11,12,14,16,20,25]),
         'pruning_rate': trial.suggest_float('pruning_rate', 0, 1)
     }
 

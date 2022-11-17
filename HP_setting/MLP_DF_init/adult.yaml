@@ -1,0 +1,16 @@
+DF_init_forest_depth: 3
+DF_init_max_features: 0.9923953104820913
+DF_init_max_tree_depth: 5
+DF_init_n_estims: 64
+DF_init_n_forests: 1
+batch_size: 256
+depth: 9
+drop_layers: 1
+epochs: 100
+learning_rate: 1.5422532014652126e-05
+reg_l1: 0
+strength01: 40.95843794148763
+strength12: 10.612979755276
+strength23: 43.7671837583337
+strength_id: 7.441639813171696
+width: 2048
