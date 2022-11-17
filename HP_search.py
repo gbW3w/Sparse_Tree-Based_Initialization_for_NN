@@ -135,7 +135,7 @@ if __name__ == '__main__':
     parser.add_argument('--n_repeats', default=1, type=int, help='number of times cross-validation is repeated.')
     parser.add_argument('--n_max', default=None, type=int, help='number maximal of total hold-out steps perfromed during cross-validation')
     parser.add_argument('-out', '--out_suffix', default='', help='suffix to output HP file name')
-    parser.add_argument('-v', '--verbose', action='store_true')
+    parser.add_argument('-v', '--verbose', action='store_true', default=True)
 
     args = parser.parse_args()
 

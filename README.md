@@ -1,14 +1,14 @@
 # Sparse Tree-Based Initialization for NN
 This repository contains the code that was used to produce the experimental results in "Sparse Tree-Based Initalizations for Neural Networks".
 
-If you want to check out the code for the different intialization methods, you might want to have look at `models/MLP.py`; if you want to check out the transition of tree-based methods into MLP, you might want to have a look at `models/DF_to_MLP.py`. This ReadMe will give instructions on how to repoduce the main results of the paper.
+If you want to check out the code for the different intialization methods, you might want to have look at `models/MLP.py`; if you want to check out the translation of tree-based methods into MLP, you might want to have a look at `models/DF_to_MLP.py`. This ReadMe will give instructions on how to repoduce the main results of the paper.
 
 ## Hyper-parameter search
 Optimal hyper parameters (HP) can be determined by calling `HP_search.py`. Please run `HP_search.py -h` for a list of required and optional arguments. An example call executing the HP search for a randomly initialized MLP on the Housing data set as we perfromed it in the paper would be
 
 ```HP_search.py --model MLP_rand_init --data housing --n_max 1 --n_trials 100```
 
-Our code will run on one GPU if available. Note that we provide all optimal HP settings that we determined in the folder `HP_setting`, so one can skip this time consuming step. The `-out` argument can be used to generate new HP configurations without overwriting the provided ones.
+Our code will run on one GPU if available. Note that we provide in the folder `HP_setting` all optimal HP settings that we we able to determine. The `--out_suffix` argument can be used to generate new HP configurations without overwriting the provided ones.
 
 Further, note that the HP of all models based on tree-based initializations are determined in TWO STEPS. In a first step, the HP of the tree-based initializer are determined. In a second step, the HP of MLP itself and of the tree-method-to-MLP-translation are determined. In accordance with the procedure in our paper, this would be done in the following way
 
@@ -31,6 +31,6 @@ Note that the `.pkl` files are heavy as they contain other information beyond th
 ## Some possible argument values
 Below, we list all possible values for the arguments `--model` and `--data`.
 
-For models: `RF` (Random Forest), `XGB` (XGBoost), `DF` (Deep Forest), `RF_init`, `XGB_init`, `DF_init`, `MLP_rand_init`, `MLP_xavier_init`, `MLP_LUVS_init`, `MLP_WT_init` (MLP with winning ticket pruning), `MLP_RF_init`, `MLP_XGB_init` (MLP GBDT init.), `MLP_DF_init`, `SAINT`
+For models: `RF` (Random Forest), `XGB` (XGBoost), `DF` (Deep Forest), `RF_init`, `XGB_init`, `DF_init`, `MLP_rand_init`, `MLP_xavier_init`, `MLP_LSUV_init`, `MLP_WT_init` (MLP with winning ticket pruning), `MLP_RF_init`, `MLP_XGB_init` (MLP GBDT init.), `MLP_DF_init`, `SAINT`
 
 For data sets: `housing`, `airbnb`, `diamonds`, `adult`, `bank`, `blastchar`, `heloc`, `higgs`, `covertype`, `volkert`.

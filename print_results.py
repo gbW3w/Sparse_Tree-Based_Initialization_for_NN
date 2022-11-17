@@ -12,7 +12,7 @@ def extend_to_length(x: np.ndarray, length: int):
 
 def print_results(data_name, method, in_suffix):
     ####### Load data
-    source_file = f'eval/eval_{data_name}_{method}_{in_suffix}'
+    source_file = f'eval/eval_{data_name}_{method}{in_suffix}'
     with open(source_file+'.pkl', 'rb') as f:
         data = pickle.load(f)
 
