@@ -113,7 +113,7 @@ class DataLoader_RepeatedStratifiedKFold():
     def get_direction(self):
         if self.task == 'regression':
             return 'minimize'
-        if self.taks == 'classification':
+        if self.task == 'classification':
             return 'maximize'
         raise ValueError()
 
