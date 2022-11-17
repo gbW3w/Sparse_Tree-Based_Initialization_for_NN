@@ -9,7 +9,6 @@ All model evaluations should be saved in a .pkl file with the following items:
 """
 
 import pickle
-from matplotlib import pyplot as plt
 import yaml
 from models.MLP import MLP
 from models.saint import SAINT

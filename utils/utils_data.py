@@ -6,7 +6,6 @@ from sklearn.model_selection import train_test_split
 from utils.load_datasets import *
 from sklearn.model_selection import RepeatedStratifiedKFold, RepeatedKFold
 import sys
-import os
 
 class DataLoader_RepeatedStratifiedKFold():
 

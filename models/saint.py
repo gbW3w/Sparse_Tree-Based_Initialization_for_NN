@@ -7,8 +7,8 @@ import torch.optim as optim
 import torch.utils.data as data_utils
 
 import numpy as np
-from torch import einsum
-from einops import rearrange
+#from torch import einsum
+#from einops import rearrange
 
 from models.saint_lib.models.pretrainmodel import SAINT as SAINTModel
 from models.saint_lib.data_openml import DataSetCatCon

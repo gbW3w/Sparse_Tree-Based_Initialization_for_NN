@@ -1,4 +1,3 @@
-from matplotlib import pyplot as plt
 from sklearn import ensemble, tree
 from utils.utils import *
 import xgboost as xgb

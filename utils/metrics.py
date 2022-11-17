@@ -1,7 +1,7 @@
 import numpy as np
-from sklearn.metrics import roc_auc_score, confusion_matrix
+from sklearn.metrics import roc_auc_score
 import torch
-from torch import logit, nn
+from torch import nn
 
 #def sigmoid(x):
 #    if isinstance(x, np.ndarray):

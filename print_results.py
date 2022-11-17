@@ -1,8 +1,5 @@
 import numpy as np
-import matplotlib.pyplot as plt
 import pickle
-from matplotlib.lines import Line2D
-from matplotlib.patches import Rectangle
 import argparse
 
 def extend_to_length(x: np.ndarray, length: int):
