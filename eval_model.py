@@ -19,6 +19,7 @@ from models.tree_models import DeepForest, RandomForest, XGBoostForest
 from utils.utils_data import DataLoader_RepeatedStratifiedKFold, handle_loggers
 from utils.metrics import *
 import argparse
+import os
 
 def count_parameters(model):
     return sum(p.numel() for p in model.parameters())
@@ -658,6 +659,9 @@ if __name__ == '__main__':
     parser.add_argument('-v', '--verbose', action='store_true', default=True)
 
     args = parser.parse_args()
+
+    if not os.path.exists('eval'):
+        os.makedirs('eval')
 
     handle_loggers(terminal=args.verbose)
     create_eval_pkl(method=args.model, data_name=args.data, n_splits=args.n_splits, n_repeats=args.n_repeats, n_max=args.n_max, one_hot=False, 

@@ -24,7 +24,7 @@ Once optimal HP for a model have been determined, this model can be evaluated by
 ## Reading the evaluation file
 The results of an evaluation are stocked in a `.pkl` file. Once the evaluation is completed, one can easily print the performance of a model by calling `print_results.py`. Please run `print_results.py -h` for a list of required and optional arguments. An example call for printing the evaluation results of the randomly initialized MLP on the Housing data set would be
 
-```python3 printing_results.py --model MLP_rand_init --data housing```
+```python3 print_results.py --model MLP_rand_init --data housing```
 
 Note that the `.pkl` files are heavy as they contain other information beyond the performance of a model (e.g., its weight distribution per layer, etc.). However, we do not provide efficient ways to extract this information yet.
 

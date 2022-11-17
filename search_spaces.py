@@ -82,8 +82,8 @@ def search_space_MLP_RF_init(trial, hp_fix, n_classes, task, in_features):
         'epochs': NB_EPOCHS, 
         'reg_l1': 0, 
         'batch_size': BATCH_SIZE,
-        'strength01': 1e10,#trial.suggest_float('strength01', 1e0, 1e4, log=True),
-        'strength12': 1e10,#trial.suggest_float('strength12', 1e-2, 1e2, log=True),
+        'strength01': trial.suggest_float('strength01', 1e0, 1e4, log=True),
+        'strength12': trial.suggest_float('strength12', 1e-2, 1e2, log=True),
         'drop_layers': DROP_LAYERS,
         'beta': 0.5
     }

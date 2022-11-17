@@ -139,6 +139,9 @@ if __name__ == '__main__':
 
     args = parser.parse_args()
 
+    if not os.path.exists(args.data_base_rep):
+        os.makedirs(args.data_base_rep)
+
     handle_loggers(None, args.verbose)
     optimize_HP(args.model, args.data, args.data_base_rep, n_trials=args.n_trials, n_splits=args.n_splits, n_repeat=args.n_repeats, 
         suffix=args.out_suffix, n_max=args.n_max, one_hot=False)
