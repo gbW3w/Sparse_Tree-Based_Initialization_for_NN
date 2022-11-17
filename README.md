@@ -19,7 +19,7 @@ Further, note that the HP of all models based on tree-based initializations are 
 ## Model evaluation
 Once optimal HP for a model have been determined, this model can be evaluated by calling `eval_model.py`. Please run `eval_model.py -h` for a list of required and optional arguments. An example call for the evaluation of the randomly initialized MLP on the Housing data set as we perfromed it in the paper would be
 
-```python3 model_eval.py --model MLP_rand_init --data housing```
+```python3 eval_model.py --model MLP_rand_init --data housing```
 
 ## Reading the evaluation file
 The results of an evaluation are stocked in a `.pkl` file. Once the evaluation is completed, one can easily print the performance of a model by calling `print_results.py`. Please run `print_results.py -h` for a list of required and optional arguments. An example call for printing the evaluation results of the randomly initialized MLP on the Housing data set would be
